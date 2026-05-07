@@ -1,0 +1,82 @@
+# ----------------------------------------
+# Node.js / React / NestJS
+# ----------------------------------------
+
+# Dependencies
+node_modules/
+# Build output
+build/
+dist/
+
+# Logs
+*.log
+
+# Environment variables
+.env
+.env.*  # For multiple environment configs
+
+# IDEs and editors
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# ----------------------------------------
+# Spring Boot (Java)
+# ----------------------------------------
+
+# Compiled class files
+*.class
+
+# Build directories
+/target/
+/bin/
+
+# Maven wrapper files
+.mvn/
+mvnw
+mvnw.cmd
+
+# IDE files
+/.classpath
+/.project
+/.settings/
+
+# Logs
+*.log
+
+# ----------------------------------------
+# Database files
+# ----------------------------------------
+
+# MongoDB data files (if storing locally)
+mongodb-data/
+
+# PostgreSQL
+*.pgsql
+*.sql
+
+# ----------------------------------------
+# Redis
+# ----------------------------------------
+
+# Redis dump files
+dump.rdb
+
+# ----------------------------------------
+# Cloudinary / Media Files
+# ----------------------------------------
+
+# Ignore media uploads if stored locally
+/media/
+uploads/
+
+# ----------------------------------------
+# Misc / System Files
+# ----------------------------------------
+
+.DS_Store
+Thumbs.db
+
+# Sensitive info
+# Be cautious with any other secrets or keys
