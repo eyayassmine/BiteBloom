@@ -8,18 +8,6 @@ node_modules/
 build/
 dist/
 
-# Logs
-*.log
-
-# Environment variables
-.env
-.env.*  # For multiple environment configs
-
-# IDEs and editors
-.vscode/
-.idea/
-*.sublime-workspace
-*.sublime-project
 
 # ----------------------------------------
 # Spring Boot (Java)
@@ -29,8 +17,41 @@ dist/
 *.class
 
 # Build directories
-/target/
+target/
+*.class
+*.jar
+*.war
+*.ear
 /bin/
+
+# Logs
+*.log
+
+# Environment variables
+.env
+.env.*
+*.env
+# For multiple environment configs
+
+
+# ----------------------------------------
+# IDEs
+# ----------------------------------------
+.idea/
+*.iws
+*.iml
+*.ipr
+out/
+.vscode/
+
+
+# ----------------------------------------
+# Spring Boot (Java)
+# ----------------------------------------
+
+# Compiled class files
+*.class
+
 
 # Maven wrapper files
 .mvn/
@@ -42,8 +63,6 @@ mvnw.cmd
 /.project
 /.settings/
 
-# Logs
-*.log
 
 # ----------------------------------------
 # Database files
@@ -70,6 +89,14 @@ dump.rdb
 # Ignore media uploads if stored locally
 /media/
 uploads/
+
+# ----------------------------------------
+# SonarQube
+# ----------------------------------------
+.sonar/
+.scannerwork/
+
+
 
 # ----------------------------------------
 # Misc / System Files

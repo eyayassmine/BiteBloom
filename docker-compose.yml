@@ -1,0 +1,63 @@
+version: '3.8'
+
+services:
+
+  eureka-server:
+    build:
+      context: ./EurekaServer
+      dockerfile: Dockerfile
+    container_name: eureka-server
+    ports:
+      - "8761:8761"
+    # Read-only filesystem — attacker can't write to container
+    read_only: true
+    # Writable temp folder (Spring needs this)
+    tmpfs:
+      - /tmp
+    # Prevent privilege escalation inside container
+    security_opt:
+      - no-new-privileges:true
+    networks:
+      - bitebloom-network
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://localhost:8761/actuator/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 40s    # give Spring Boot time to start
+
+  api-gateway:
+    build:
+      context: ./ApiGateway
+      dockerfile: Dockerfile
+    container_name: api-gateway
+    ports:
+      - "8222:8222"
+    read_only: true
+    tmpfs:
+      - /tmp
+    security_opt:
+      - no-new-privileges:true
+    depends_on:
+      eureka-server:
+        condition: service_healthy
+    environment:
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka/
+      - SPRING_APPLICATION_NAME=ApiGateway
+    networks:
+      - bitebloom-network
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://localhost:8222/actuator/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 40s
+
+networks:
+  bitebloom-network:
+    driver: bridge
+    # Disable inter-container communication by default
+    # Services can only talk through explicitly defined networks
+    ipam:
+      config:
+        - subnet: 172.20.0.0/16

@@ -1,0 +1,36 @@
+target/
+# Maven wrapper
+.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+### IntelliJ IDEA ###
+target/
+.idea
+*.iws
+*.iml
+*.ipr
+
+
+# Logs
+*.log
+
+# Environment
+.env
+.env.*
+
+# SonarQube
+.sonar/
+.scannerwork/
+
+### VS Code ###not necessary here but if we want to open it in vs code and work with vs code it's must
+.vscode/
